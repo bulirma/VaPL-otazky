@@ -6,18 +6,20 @@ header-includes: \usepackage{amsmath}
 
 \maketitle
 
-# (P1) Model ve výrokové logice, pravdivostní funkce výroku
+# Pojmy
 
-## Model jazyka
+## (P1) Model ve výrokové logice, pravdivostní funkce výroku
+
+### Model jazyka
 
 Model jazyka je libovolné ohodnocení $\upsilon: \mathbb{P} \rightarrow \{ 0, 1 \}$.
 
-## Model teorie
+### Model teorie
 
 Model teorie je ohodnocení $\upsilon \models T$.
 Pro každý $\varphi \in T$ je $\upsilon$ platným ohodnocením $\varphi$, tedy $f_{\varphi, \mathbb{P}}(\upsilon) = 1$.
 
-## Pravdivostní funkce
+### Pravdivostní funkce
 
 Pravdivostní funkce výroku $\varphi$ v jazyce $\mathbb{P}$ je $f_{\varphi, \mathbb{P}}: \{ 0, 1 \}^{|\mathbb{P}|} \rightarrow \{ 0, 1 \}:$
 
@@ -28,7 +30,7 @@ $$f_{\varphi, \mathbb{P}}(x_0, ..., x_{n - 1}) = f_{\square}(f_{\varphi', \mathb
 
 \pagebreak
 
-# (P2) Sémantické pojmy (pravdivost, lživost, nezávislost, splnitelnost) v logice, vzhledem k teorii
+## (P2) Sémantické pojmy (pravdivost, lživost, nezávislost, splnitelnost) v logice, vzhledem k teorii
 
 Výrok $\varphi$ v jazyce $\mathbb{P}$ je:
 
@@ -52,7 +54,7 @@ tedy není lživý v *T* ($M_{\mathbb{P}}(\varphi) \neq \emptyset$)
 
 \pagebreak
 
-# (P3) Ekvivalence výroků, resp. výrokových teorií
+## (P3) Ekvivalence výroků, resp. výrokových teorií
 
 Výroky jsou ekvivalentní v logice, pokud $M_{\mathbb{P}}(\varphi) = M_{\mathbb{P}}(\psi)$.
 
@@ -62,7 +64,7 @@ $$M_{\mathbb{P}}(T, \varphi) \equiv M_{\mathbb{P}}(T \cup \{ \psi \}) = M_{\math
 
 \pagebreak
 
-# (P4) Sémantické pojmy o teorii (sporná, bezesporná, kompletní, splnitelná)
+## (P4) Sémantické pojmy o teorii (sporná, bezesporná, kompletní, splnitelná)
 
 Vlastnosti teorie *T* v jazyce $\mathbb{P}$:
 
@@ -72,7 +74,7 @@ Vlastnosti teorie *T* v jazyce $\mathbb{P}$:
 
 \pagebreak
 
-# (P5) Extenze teorie (jednoduchá, konzervativní), odpovídajíí sémantická kritéria
+## (P5) Extenze teorie (jednoduchá, konzervativní), odpovídajíí sémantická kritéria
 
 Mějme teorii *T* v jazyce $\mathbb{P}$.
 Extenze teorie *T* je libovolná teorie $T'$ v jazyce $\mathbb{P}' \supseteq \mathbb{P}$
@@ -85,9 +87,9 @@ Extenze je:
 
 \pagebreak
 
-# (P6) Tablo z teorie, tablo důkaz.
+## (P6) Tablo z teorie, tablo důkaz.
 
-## Tablo ve výrokové logice
+### Tablo ve výrokové logice
 
 Konečné tablo z teorie *T* je uspořádaný, položkami označkovaný strom
 zkonstruovaný v konečně mnoha krocích dle následující pravidel:
@@ -101,7 +103,7 @@ Tablo je buď konečné nebo nekonečné, ale vzniklo ve spočetně mnoha krocí
 
 Tablo pro položku *P* je tablo s položkou *P* v kořeni.
 
-## Tablo důkaz ve výrokové logice
+### Tablo důkaz ve výrokové logice
 
 Tablo důkaz výroku $\varphi$ z *T* je sporné tablo z teorie *T* s položkou F$\varphi$ v kořeni.
 Pokud existuje, je $\varphi$ (tablo) dokazatelný z *T* ($T \vdash \varphi$).
@@ -127,13 +129,13 @@ Položka je redukovaná, pokud:
 - nebo při konstrukci tabla již došlo k jejímu rozvoji na *V*,
 tedy vyskytuje se na *V* jako kořen atomického tabla
 
-## Tablo v predikátové logice
+### Tablo v predikátové logice
 
 Oproti tablu ve výrokové logice máme ještě atomická tabla pro kvantifikátory.
 Dvě jsou typu "všichni" a dvě typu "svědek".
 
 Pro spočetný jazyk *L* bez rovnosti označíme $L_C$ rozšíření jazyka *L* o spočetně mnoho nových
-pomocných konstantích symbolů $C = \{ c_i | i \in \mathbb{N} \}$.
+pomocných konstantích symbolů $C = \{ c_i \mid i \in \mathbb{N} \}$.
 
 Konečné tablo z teorie *T* je uspořádaný, položkami označkovaný strom
 zkonstruovaný v konečně mnoha krocích dle následující pravidel:
@@ -149,7 +151,7 @@ Tablo je buď konečné nebo nekonečné, ale vzniklo ve spočetně mnoha krocí
 
 Tablo pro položku *P* je tablo s položkou *P* v kořeni.
 
-## Tablo důkaz v predikátové logice
+### Tablo důkaz v predikátové logice
 
 Tablo důkaz sentence $\varphi$ z *T* je sporné tablo z teorie *T* s položkou F$\varphi$ v kořeni.
 Pokud existuje, je $\varphi$ (tablo) dokazatelný z *T* ($T \vdash \varphi$).
@@ -185,10 +187,9 @@ F$\varphi(x/t_i)$, je-li $P =$ F$(\exists x)\varphi(x)$, kde $t_i$ je *i*-tý ko
 Pro jazyk s rovností rozšíříme teorii o generální uzávěry axiomů rovnosti.
 
 \pagebreak
+## (P7) Kanonický model
 
-# (P7) Kanonický model
-
-## Kanonický model ve výrokové logice
+### Kanonický model ve výrokové logice
 
 Je-li *V* bezesporná větev dokončeného tabla,
 pak kanonický model pro *V* je definovaný předpisem (pro $p \in \mathbb{P}$):
@@ -196,7 +197,7 @@ pak kanonický model pro *V* je definovaný předpisem (pro $p \in \mathbb{P}$):
 - $v(p) = 1$ pokud se na *V* vyskytuje položka T*p*
 - $v(p) = 0$ jinak
 
-## Kanonický model v predikátové logice
+### Kanonický model v predikátové logice
 
 Mějme teorii *T* v jazyce $L = \langle \mathcal{F}, \mathcal{R} \rangle$ a nechť *V* je bezesporná větev
 nějakého dokončeného tabla z teorie *T*. Potom kanonický model pro *V* je $L_C$-struktura
@@ -212,9 +213,9 @@ Pro jazyk *L* s rovností je definován jako faktorstruktura $\mathcal{A} = \mat
 
 \pagebreak
 
-# (P8) Kongruence struktury, faktorstruktura, axiomy rovnosti
+## (P8) Kongruence struktury, faktorstruktura, axiomy rovnosti
 
-## Kongruence struktury
+### Kongruence struktury
 
 Mějme ekvivalenci $\sim$ na množině *A*, funkci $f: A^n \rightarrow A$
 a relaci $R \subseteq A^n$. Říkáme, že $~$ je:
@@ -227,7 +228,7 @@ $R(x_1, ..., x_n) \Leftrightarrow R(y_1, ..., y_n)$
 Kongruence struktury $\mathcal{A}$ je ekvivalence $\sim$ na množině *A*,
 která je kongurencí pro všechny funkce a relace $\mathcal{A}$.
 
-## Faktorstruktura
+### Faktorstruktura
 
 Mějme strukturu $\mathcal{A}$ a její kongruenci $\sim$. Faktorstruktura (podílová struktura)
 $\mathcal{A}$ podle $\sim$ je struktura $\mathcal{A}/_{\sim}$ v témž jazyce, jejíž univerzum $A/_{\sim}$
@@ -237,7 +238,7 @@ je množina všech rozkladových tříd *A* podle $\sim$ a jejíž funkce a rela
 pro každý *n*-ární funkční symbol
 - $R^{\mathcal{A}/_{\sim}}(\left[ x_1 \right]_{\sim}, ..., \left[ x_n \right]_{\sim}) \Leftrightarrow R^{\mathcal{A}/_{\sim}}(x_1, ..., x_n)$
 
-## Axiomy rovnosti
+### Axiomy rovnosti
 
 Axiomy rovnosti pro jazyk *L* s rovností jsou:
 
@@ -249,31 +250,31 @@ pro každý *n*-ární relační symbol *R* jazyka *L* včetně rovnosti
 
 \pagebreak
 
-# (P9) CNF a DNF, Hornův tvar, množinová reprezentace CNF formule, splňující ohodnocení
+## (P9) CNF a DNF, Hornův tvar, množinová reprezentace CNF formule, splňující ohodnocení
 
-## CNF
+### CNF
 
 Formule je v konjuktivně normální formě (CNF), jedná-li se o konjunkci klauzulí.
 Klauzule jsou literály v disjunkci. Literál je prvovýrok či jeho negace.
 Prázdný výrok v CNF je $\top$.
 
-## DNF
+### DNF
 
 Formule je v disjunktivně normální formě (CNF), jedná-li se o disjunkcí elementárních konjukcí.
 Elementární konjunkce je konjunkce literálů.
 Prázdný výrok v DNF je $\bot$.
 
-## Hornův tvar
+### Hornův tvar
 
 Výrok je v Hornově tvaru, pokud je konjunkcí hornovských klauzulí.
 Hornovská klauzule je klauzule obsahující nejvýše jeden pozitivní literál.
 
-## Množinová reprezentace CNF formule
+### Množinová reprezentace CNF formule
 
 Klauzule jsou reprezentovány jako množiny literálů.
 Formule v CNF je pak reprezentována množinou těchto množin.
 
-## Ohodnocení
+### Ohodnocení
 
 V množinové reprezentaci se jedná o množinu literálů,
 kde pro každou proměnnou máme právě jeden literál.
@@ -287,28 +288,55 @@ Tedy $\forall C \in S: \upsilon \cap C \neq \emptyset \implies \upsilon \models 
 
 \pagebreak
 
-# (P10) Rezoluční pravidlo, unifikace, nejobecnější unifikace
+## (P10) Rezoluční pravidlo, unifikace, nejobecnější unifikace
 
-## Rezoluční pravidlo
+### Rezoluční pravidlo
 
 Mějme klauzule $C_1$ a $C_2$ a literál $\ell$ t.ž. $\ell \in C_1$ a $\overline{\ell} \in C_2$.
 Potom rezolventa klauzulí $C_1$ a $C_2$ přes literál $\ell$ je klauzule
 
 $$C = (C_1 \setminus \{ \ell \} \cup C_2 \setminus \{ \overline{\ell} \})$$
 
-## Unifikace
+### Unifikace
 
-### Substituce
+Mějme konečnou množinu výrazů $S = \{ E_1, ..., E_n \}$. Substituce $\sigma$ je unifikace pro *S*,
+pokud $E_1\sigma = E_2\sigma = ... = E_n\sigma$, tedy $S\sigma$ obsahuje jediný výraz.
+Pokud existuje, *S* je unifikovatelná.
 
-### Skládání substitucí
+#### Substituce
 
-## Nejobecnější unifikace
+Substituce je konečná množina $\sigma = \{ x_1/t_1, ..., x_n/t_n \}$, kde $x_i$ jsou navzájem různé proměnné
+a $t_i$ jsou termy různé od $x_i$.
+
+Substituce je
+
+- základní, jsou-li všechny termy $t_i$ konstantní
+- přejmenování proměnných, jsou-li všehcny termy $t_i$ navzájem různé proměnné
+
+Instance výrazu E při substituci $\sigma = \{ x_1/t_1, ..., x_n/t_n \}$ je výraz $E\sigma$ vzniklý z *E*
+simultánním nahrazením všech výskytů proměnných $x_i$ termy $t_i$.
+Pro množinu výrazů *S* značíme $S\sigma = \{ E\sigma \mid E \in S \}$.
+
+#### Skládání substitucí
+
+Mějme substituce $\sigma = \{ x_1/t_1, ..., x_n/t_n \}$ a $\tau = \{ y_1/t_1, ..., y_m/t_m \}$.
+Složení substitucí $\sigma$ a $\tau$ je substituce
+
+$$\sigma\tau = \{ x_i/t_i\tau \mid x_i \in X, x_i \neq t_i\tau \} \cup \{ y_j/s_j \mid y_j \in Y \setminus X \}$$
+
+kde $X = \{ x_1, ..., x_n \}$ a $Y = \{ y_1, ..., y_m \}$.
+
+### Nejobecnější unifikace
+
+Unifikace $\sigma$ pro *S* je nejobecnější,
+pokud pro každou unifikaci $\tau$ pro *S* existuje substituce $\lambda$ taková,
+že $\tau = \sigma\lambda$.
 
 \pagebreak
 
-# (P11) Rezoluční důkaz a zamítnutí, rezoluční strom
+## (P11) Rezoluční důkaz a zamítnutí, rezoluční strom
 
-## Rezoluční důkaz a zamítnutí
+### Rezoluční důkaz a zamítnutí
 
 Rezoluční důkaz (odvození) klauzule *C* z formule *S* je konečná posloupnost klauzulí
 $C_0, C_1, ..., C_n = C$ taková, že pro každé *i*
@@ -320,7 +348,7 @@ Pokud rezoluční důkaz existuje, tak $S \vdash_R C$.
 
 Jestliže jsme z *S* rezolucí dokázali $\square$, formuli *S* jsme tím zamítli.
 
-## Rezoluční důkaz a zamítnutí v predikátové logice
+### Rezoluční důkaz a zamítnutí v predikátové logice
 
 Rezoluční důkaz (odvození) klauzule *C* z formule *S* je konečná posloupnost klauzulí
 $C_0, C_1, ..., C_n = C$ taková, že pro každé *i*
@@ -332,7 +360,7 @@ Pokud rezoluční důkaz existuje, tak $S \vdash_R C$.
 
 Jestliže jsme z *S* rezolucí dokázali $\square$, formuli *S* jsme tím zamítli.
 
-## Rezoluční strom
+### Rezoluční strom
 
 Rezoluční strom klauzule *C* z *S* je konečný binární strom s vrcholy označenými klauzulemi, kde
 
@@ -342,32 +370,32 @@ Rezoluční strom klauzule *C* z *S* je konečný binární strom s vrcholy ozna
 
 \pagebreak
 
-# (P12) Vysvětlete rozdíl mezi rezolučním důkazem, lineárním důkazem, a LI-důkazem.
+## (P12) Vysvětlete rozdíl mezi rezolučním důkazem, lineárním důkazem, a LI-důkazem.
 
 \pagebreak
 
-# (P13) Signatura a jazyk predikátové logiky, struktura daného jazyka.
+## (P13) Signatura a jazyk predikátové logiky, struktura daného jazyka.
 
-## Signatura
+### Signatura
 
 Signatura je dvojice $\langle \mathcal{R}, \mathcal{F} \rangle$, kde $\mathcal{R}$ a $\mathcal{F}$
 jsou disjunktní množiny relačních, resp. funkčních (ty zahrnují i konstantní) symbolů spolu s danými aritami.
 
 Arita je funkce $ar: \mathcal{R} \cup \mathcal{F} \rightarrow \mathbb{N}$.
 
-## Struktura
+### Struktura
 
 Struktura v signatuře $\langle \mathcal{R}, \mathcal{F} \rangle$ je trojice
 $\mathcal{A} = \langle A, \mathcal{R}^{\mathcal{A}}, \mathcal{F}^{\mathcal{A}} \rangle$, kde
 
 - *A* je neprázdná množina zvaná doména, či univerzum
-- $\mathcal{R}^{\mathcal{A}} = \{ R^{\mathcal{A}} | R \in \mathcal{R} \}$
+- $\mathcal{R}^{\mathcal{A}} = \{ R^{\mathcal{A}} \mid R \in \mathcal{R} \}$
 kde $\mathcal{R}^{\mathcal{A}} \subseteq A^{ar(R)}$ je interpretace relačního symbolu *R*
-- $\mathcal{F}^{\mathcal{A}} = \{ f^{\mathcal{A}} | f \in \mathcal{F} \}$
+- $\mathcal{F}^{\mathcal{A}} = \{ f^{\mathcal{A}} \mid f \in \mathcal{F} \}$
 kde $\mathcal{F}^{\mathcal{A}}: A^{ar(f)} \rightarrow A$ je interpretace funkčního symbolu *f*;
 speciálně pro konstantní symbol $c \in \mathcal{F}$ máme $c^{\mathcal{A}} \in A$
 
-## Jazyk predikátové logiky
+### Jazyk predikátové logiky
 
 Jazyk obsahuje
 
@@ -378,27 +406,27 @@ Jazyk obsahuje
 
 \pagebreak
 
-# (P14) Atomická formule, formule, sentence, otevřené formule.
+## (P14) Atomická formule, formule, sentence, otevřené formule.
 
-## Atomická formule
+### Atomická formule
 
-## Formule
+### Formule
 
-## Sentence
+### Sentence
 
-## Otevřená formule
+### Otevřená formule
 
 \pagebreak
 
-# (P15) Instance formule, substituovatelnost, varianta formule
+## (P15) Instance formule, substituovatelnost, varianta formule
 
-## Instance formule a substituovatelnost
+### Instance formule a substituovatelnost
 
 Term *t* je substituovatelný do $\varphi$ za *x*,
 pokud po simultánním nahrazení všech volných výskytů nevznikne ve $\varphi$ žádný vázaný výskyt proměnné z *t*.
 $\varphi' = \varphi(x/t)$ je instance formule $\varphi$.
 
-## Varianta formule
+### Varianta formule
 
 Má-li $\varphi$ podformuli $(Qx)\psi$ a 
 
@@ -409,11 +437,11 @@ Pak $\varphi'$ s $(Qy)\psi'$ vzniklou z $(Qy)\psi(x/y)$ je variantou $\varphi$. 
 
 \pagebreak
 
-# (P16) Pravdivostní hodnota formule ve struktuře při ohodnocení, platnost formule ve struktuře.
+## (P16) Pravdivostní hodnota formule ve struktuře při ohodnocení, platnost formule ve struktuře.
 
 \pagebreak
 
-# (P17) Kompletní teorie v predikátové logice, elementární ekvivalence
+## (P17) Kompletní teorie v predikátové logice, elementární ekvivalence
 
 Teorie je kompletní, je-li bezesporná a každá sentence je v ní buď pravdivá, nebo lživá.
 
@@ -424,21 +452,21 @@ Teorije je kompletní $\Leftrightarrow$ má právě jeden model až elementárn�
 
 \pagebreak
 
-# (P18) Podstruktura, generovaná podstruktura, expanze a redukt struktury
+## (P18) Podstruktura, generovaná podstruktura, expanze a redukt struktury
 
-## Podstruktura
+### Podstruktura
 
-## Generovaná podstruktura
+### Generovaná podstruktura
 
-## Expanze a redukt struktury
-
-\pagebreak
-
-# (P19) Definovatelnost ve struktuře
+### Expanze a redukt struktury
 
 \pagebreak
 
-# (P20) Extenze o definice
+## (P19) Definovatelnost ve struktuře
+
+\pagebreak
+
+## (P20) Extenze o definice
 
 Extenze o definice je speciálním případem konzervativní extenze teorie v predikátové logice.
 Definuje nové relační a funkční symboly.
@@ -450,7 +478,7 @@ Každý model teorie *T* lze jednoznačně expandovat na model teorie $T'$.
 Pro každou $L'$-formuli $\varphi'$ existuje *L*-formule $\varphi$ taková,
 že $T' \models \varphi' \leftrightarrow \varphi$.
 
-## Definice relačního symbolu
+### Definice relačního symbolu
 
 Mějme teorii *T* a formuli $\psi(x_1, ..., x_n)$ v jazyce *L*.
 Označme jako $L'$ rozšíření jazyka *L* o nový *n*-ární relační symbol *R*.
@@ -458,7 +486,7 @@ Extenze teorie *T* o definici *R* formulí $\psi$ je $L'$-teorie:
 
 $$T' = T \cup \{ R(x_1, ..., x_n) \leftrightarrow \psi(x_1, ..., x_n) \}$$
 
-## Definice funkčního symbolu
+### Definice funkčního symbolu
 
 Mějme teorii *T* a formuli $\psi(x_1, ..., x_n)$ v jazyce *L*.
 Označme jako $L'$ rozšíření jazyka *L* o nový *n*-ární funkční symbol *f*.
@@ -475,23 +503,23 @@ Speciálně pro konstantní symbol je $n = 0$.
 
 \pagebreak
 
-# (P21) Prenexní normální forma, Skolemova varianta
+## (P21) Prenexní normální forma, Skolemova varianta
 
 \pagebreak
 
-# (P22) Izomorfismus struktur, izomorfní spektrum, $\omega$-kategorická teorie
+## (P22) Izomorfismus struktur, izomorfní spektrum, $\omega$-kategorická teorie
 
 \pagebreak
 
-## (P23) Axiomatizovatelnost, konečná axiomatizovatelnost, otevřená axiomatizovatelnost
+### (P23) Axiomatizovatelnost, konečná axiomatizovatelnost, otevřená axiomatizovatelnost
 
 \pagebreak
 
-## (P24) Rekurzivní axiomatizace, rekurzivní axiomatizovatelnost, rekurzivně spočetná kompletace.
+### (P24) Rekurzivní axiomatizace, rekurzivní axiomatizovatelnost, rekurzivně spočetná kompletace.
 
 \pagebreak
 
-# (P25) Rozhodnutelná a částečně rozhodnutelná teorie
+## (P25) Rozhodnutelná a částečně rozhodnutelná teorie
 
 Teorie je rozhodnutelná, pokud existuje algoritmus,
 který pro každou vstupní formuli $\varphi$ doběhne a odpoví, zda $T \models \varphi$.
@@ -506,41 +534,90 @@ nebo doběhne a odpoví "ne"
 
 \pagebreak
 
-# (L1) Množinu modelů nad konečným jazykem lze axiomatizovat výrokem v CNF, výrokem v DNF
+# Lehké otázky
 
+## (L1) Množinu modelů nad konečným jazykem lze axiomatizovat výrokem v CNF, výrokem v DNF
 
+Nad konečným jazykem máme konečně mnoho modelů a konečně mnoho nemodelů v jazyce.
 
-\pagebreak
+Do DNF převedeme výrok tak, že za elementární konjunkce položíme modely.
+Elementární konjukce je tedy 1 pro daný model, tedy celý výrok v DNF je 1.
+Pokud dostaneme ohodnocení, které není model, pak je výrok 0, neboť není splněna žádná elementární konjunkce.
 
-# (L2) 2-SAT, Algoritmus implikačního grafu, jeho korektnost
-
-\pagebreak
-
-# (L3) Horn-SAT, Algoritmus jednotkové propagace, jeho korektnost
-
-\pagebreak
-
-# (L4) Algoritmus DPLL pro řešení SAT
-
-\pagebreak
-
-# (L5) Věta o konstantách
+Do CNF převedeme výrok tak, že za klauzule položíme nemodely s inverzními výrokovými proměnnými.
+Pokud tedy dosadíme do CNF výroku nemodel, jedna z klauzulí nemůže být splněná, výrok je tedy 0.
+Pokud dosadíme model, musí v každé klauzuli být alespoň jeden literálů 1, jinak by se jednalo o nemodel.
+Výrok je v takovém případě 1.
 
 \pagebreak
 
-# (L9) Věta o kompaktnosti a její aplikace
+## (L2) 2-SAT, Algoritmus implikačního grafu, jeho korektnost
 
-## Znění
+### 2-SAT
+
+Problém splnitelnosti, neboli SAT, je výpočetní problém,
+kde je pro daný výrok v CNF úkolem rozhodnout, zda je splnitelný.
+
+Problém 2-SAT je speciálním případem, kde klauzule mají nejvýše 2 literály.
+
+## Algoritmus implikačního grafu
+
+Implikační graf se zakládá na myšlence, že 2-klauzuli $\ell_1 \lor \ell_2$ lze zapsat jako:
+$\overline{\ell_1} \rightarrow \ell_2$ a $\overline{\ell_2} \rightarrow \ell_1$.
+Jednotkovou klauzuli $\ell$ pak lze vyjádřit jako $\overline{\ell} \rightarrow \ell$.
+
+Implikační graf $\mathcal{G}_{\varphi}$ je definován takto:
+
+- $V(\mathcal{G}_{\varphi}) = \{ p, \neg p \mid p \in Var(\varphi) \}$
+- $E(\mathcal{G}_{\varphi}) = \{ (\overline{\ell_1}, \ell_2), (\overline{\ell_2}, \ell_1) \mid \ell_1 \lor \ell_2$
+je 2-klauzule $\varphi \} \cup \{ (\overline{\ell}, \ell) \mid \ell$ je jednotková klauzule $\varphi \}$
+
+1) nalezneme komponenty silné souvislosti
+    - pokud nějaká komponenta obsahuje opačné literály, výrok je nesplnitelný
+2) graf těchto komponent topologicky uspořádáme
+3) ohodnotíme komponenty
+    i) vezmeme nejlevější neohodnocenou komponentu a ohodnotíme jí nulou
+    ii) opačnou komponentu ohodnotíme jedničkou
+    iii) opakujeme dokud máme neohodnocené komponenty
+
+Po kroku (1) už lze rozhodnout splnitelnost výroku. Další kroky hledají případné ohodnocení.
+
+## Korektnost algoritmu implikačního grafu
+
+Každé ohodnocení musí ohodnotit všechny literály z jedné komponenty stejnou hodnotou.
+V jedné komponentě tedy nemohou výt opačné literály.
+
+Získané ohodnocení je platné, neboť pro jednotkovou klauzuli literál $\overline{\ell}$ přechází $\ell$.
+Při konstrukci jsme pak ohodnotili $\overline{\ell} = 0$ a $\ell = 1$.
+Stejně tak pro 2-klauzuli.
+
+\pagebreak
+
+## (L3) Horn-SAT, Algoritmus jednotkové propagace, jeho korektnost
+
+\pagebreak
+
+## (L4) Algoritmus DPLL pro řešení SAT
+
+\pagebreak
+
+## (L5) Věta o konstantách
+
+\pagebreak
+
+## (L9) Věta o kompaktnosti a její aplikace
+
+### Znění
 
 Teorie má model $\Leftrightarrow$ každá její konečná část má model.
 
-## Důkaz
+### Důkaz
 
-### Implikace doprava
+#### Implikace doprava
 
 Každý model teorie je zjevně modelem každé její části.
 
-### Implikace doleva
+#### Implikace doleva
 
 Dokážeme nepřímo: předpokládáme, že *T* nemá model,
 tedy je sporná a chceceme ukázat,
@@ -554,21 +631,23 @@ Definujeme $T' = \{ \alpha \in T$, T$\alpha$ je položka v tablu$\}$,
 pak tablo je důkazem sporu z teorie *T*.
 $T'$ je sporná konečná část *T*.
 
-## Aplikace
+### Aplikace
 
 Spočetně nekonečná graf je bipartitní $\Leftrightarrow$
 každý jeho konečná podgraf je bipartitiní.
 
 \pagebreak
 
-# (T3) Věta o úplnosti tablo metody ve výrokové logice
+# Těžké otázky
 
-## Znění
+## (T3) Věta o úplnosti tablo metody ve výrokové logice
+
+### Znění
 
 Je-li výrok $\varphi$ pravdiví v teorii *T*,
 potom je tablo dokazatelná z *T*.
 
-## Důkaz
+### Důkaz
 
 Ukážeme, že libovolné dokončené tablo z *T* s položkou F$\varphi$ v kořeni je nutně sporné.
 Důkaz povedeme sporem.
@@ -588,13 +667,13 @@ být tablo důkazem $\varphi$ z *T*.
 
 \pagebreak
 
-# (T6) Věta o úplnosti rezoluce ve výrokové logice
+## (T6) Věta o úplnosti rezoluce ve výrokové logice
 
-## Znění
+### Znění
 
 Je-li formule *S* nesplnitelná, je rezolucí zamítnutelná.
 
-## Důkaz
+### Důkaz
 
 Je-li *S* nekonečná, má konečnou nesplnitelnou část $S'$.
 Rezoluční zamítnutí $S'$ je také rezolučním zamítnutím *S*.
