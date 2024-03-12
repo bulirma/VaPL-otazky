@@ -286,6 +286,9 @@ Jinak je úplné.
 Ohodnocení je splňující, pokud obsahuje literál z každé klauzule.
 Tedy $\forall C \in S: \upsilon \cap C \neq \emptyset \implies \upsilon \models S$.
 
+Ohodnocení v predikátové logice je funkce $e: Var \rightarrow A$,
+kde $Var$ je množina všch proměnných jazyka a *A* je doména.
+
 \pagebreak
 
 ## (P10) Rezoluční pravidlo, unifikace, nejobecnější unifikace
@@ -372,6 +375,65 @@ Rezoluční strom klauzule *C* z *S* je konečný binární strom s vrcholy ozna
 
 ## (P12) Vysvětlete rozdíl mezi rezolučním důkazem, lineárním důkazem, a LI-důkazem.
 
+Lineární důkaz je postaven kolem centrální klauzule, která se rezolvuje pomocí bočních klauzulí,
+tedy axiomu z formule nebo předchozí centrální klauzule.
+
+U LI důkazu je navíc požadavek aby tato boční klauzule byla pouze axiom z formule.
+
+### Lineární důkaz
+
+Lineární důkaz rezolucí klauzule *C* z formule *S* je konečná posloupnost
+
+$$
+\begin{bmatrix}
+C_0 \\
+B_0
+\end{bmatrix},
+\begin{bmatrix}
+C_1 \\
+B_1
+\end{bmatrix},
+...,
+\begin{bmatrix}
+C_n \\
+B_n
+\end{bmatrix},
+C_{n + 1}
+$$
+
+kde $C_i$ je centrální klauzule, $C_0$ je počáteční klauzule, $C_{n + 1} = C$ je koncová klauzule,
+$B_i$ jsou boční klauzule, a platí:
+
+- $C_0 \in S$, pro $i \leq n$ je $C_{i + 1}$ rezolventou $C_i$ a $B_i$
+- $B_0 \in S$, pro $i \leq n$ je $B_i \in S$ nebo $B_i = C_j$ pro nějaké $j < i$
+
+Lineární zamítnutí *S* je lineární důkaz $\square$ z *S*.
+
+### LI-důkaz
+
+LI-důkaz rezolucí klauzule *C* z formule *S* je lineární důkaz
+
+$$
+\begin{bmatrix}
+C_0 \\
+B_0
+\end{bmatrix},
+\begin{bmatrix}
+C_1 \\
+B_1
+\end{bmatrix},
+...,
+\begin{bmatrix}
+C_n \\
+B_n
+\end{bmatrix},
+C_{n + 1}
+$$
+
+
+ve kterém je boční klauzule $B_i$ axiom z *S*.
+Pokud důkaz existuje, je klauzule *C* z *S* LI-dokazatelná ($S \vdash_{LI} C$).
+Pokud $S \vdash_{LI} \square$, je LI-zamítnutelná.
 \pagebreak
 
 ## (P13) Signatura a jazyk predikátové logiky, struktura daného jazyka.
@@ -410,11 +472,25 @@ Jazyk obsahuje
 
 ### Atomická formule
 
+Atomická formule jazyka *L* je nápis $R(t_1, ..., t_n)$, kde *R* je *n*-ární relační symbol z *L* včetně $=$,
+jde-li o jazyk s rovností a $t_i \in Term_L$.
+
 ### Formule
+
+Formule jazyka *L* jsou konečné nápisy definované induktivně:
+
+- každá atomická formule jazyka *L* je formule
+- $\varphi$ je formule $\Rightarrow$ $(\neg\varphi)$ je formule
+- $\varphi, \psi$ jsou formule $\Rightarrow$ $(\varphi \land \psi), (\varphi \lor \psi), (\varphi \rightarrow \psi), (\varphi \leftrightarrow \psi)$ jsou formule
+- $\varphi$ je formule a *x* je proměnná $\Rightarrow$ $((\forall x)\varphi)$ a $((\exists x)\varphi)$ jsou formule
 
 ### Sentence
 
+Formule je uzavřená, tedy je sentence, pokud nemá žádnou volnou proměnnou.
+
 ### Otevřená formule
+
+Formule je otevřená, pokud neobsahuje žádný kvantifikátor.
 
 \pagebreak
 
@@ -438,6 +514,35 @@ Pak $\varphi'$ s $(Qy)\psi'$ vzniklou z $(Qy)\psi(x/y)$ je variantou $\varphi$. 
 \pagebreak
 
 ## (P16) Pravdivostní hodnota formule ve struktuře při ohodnocení, platnost formule ve struktuře.
+
+### Pravdivostní hodnota
+
+Mějme formuli $\varphi$ v jazyce *L*, strukturu $\mathcal{A} \in M_L$, a ohodnocení proměnných $e: Var \rightarrow A$.
+Pravdivostní hodnota $\varphi$ v $\mathcal{A}$ při ohodnocení *e*, $PH^{\mathcal{A}}(\varphi)\left[ e \right]$,
+je definována induktivně podle struktury formule
+
+- pro atomickou formuli $R(t_1, ..., t_n)$
+    - $1$, pokud $(t_1^{\mathcal{A}}\left[ e \right], ..., t_n^{\mathcal{A}}\left[ e \right]) \in R^{\mathcal{A}}$
+    - $0$ jinak
+    - speciálně pro rovnost: $1$, když $(t_1^{\mathcal{A}}\left[ e \right], t_2^{\mathcal{A}}\left[ e \right]) \in$ $=^{\mathcal{A}}$, jinak $0$
+- pro formule $\varphi, \psi$ a pro binární logické spojky $\square \in \{ \land, \lor, \rightarrow, \leftrightarrow \}$
+$PH^{\mathcal{A}}(\varphi \square \psi)\left[ e \right] = f_{\square}(PH^{\mathcal{A}}(\varphi)\left[ e \right], PH^{\mathcal{A}}(\psi)\left[ e \right])$
+- pro kvantifikátory
+    - $PH^{\mathcal{A}}((\forall x)\varphi)\left[ e \right] = \min_{a \in A} (PH^{\mathcal{A}}(\varphi)\left[ e(x/a) \right]$
+    - $PH^{\mathcal{A}}((\exists x)\varphi)\left[ e \right] = \max_{a \in A} (PH^{\mathcal{A}}(\varphi)\left[ e(x/a) \right]$
+
+### Platnost
+
+Mějme formuli $\varphi$ a strukturu $\mathcal{A}$ (ve stejném jazyce).
+
+- pro *e* ohodnocení $PH^{\mathcal{A}}(\varphi)\left[ e \right] = 1$ $\Rightarrow$
+$\varphi$ platí v $\mathcal{A}$ při ohodnocení *e*, \newline
+$\mathcal{A} \models \varphi\left[ e \right]$
+(jinak $\varphi$ neplatí v $\mathcal{A}$ při ohodnocení *e*, $\mathcal{A} \not\models \varphi\left[ e \right]$)
+- $\varphi$ platí při každém ohodnocení $\Rightarrow$ $\varphi$ je pravdivá, platí v $\mathcal{A}$,
+$\mathcal{A} \models \varphi$
+- $\mathcal{A} \models \neg\varphi$, $\varphi$ neplatí v $\mathcal{A}$ při žádném ohodnocení $\Rightarrow$
+$\varphi$ je lživá v $\mathcal{A}$
 
 \pagebreak
 
@@ -511,11 +616,11 @@ Speciálně pro konstantní symbol je $n = 0$.
 
 \pagebreak
 
-### (P23) Axiomatizovatelnost, konečná axiomatizovatelnost, otevřená axiomatizovatelnost
+## (P23) Axiomatizovatelnost, konečná axiomatizovatelnost, otevřená axiomatizovatelnost
 
 \pagebreak
 
-### (P24) Rekurzivní axiomatizace, rekurzivní axiomatizovatelnost, rekurzivně spočetná kompletace.
+## (P24) Rekurzivní axiomatizace, rekurzivní axiomatizovatelnost, rekurzivně spočetná kompletace.
 
 \pagebreak
 
@@ -594,6 +699,18 @@ Stejně tak pro 2-klauzuli.
 \pagebreak
 
 ## (L3) Horn-SAT, Algoritmus jednotkové propagace, jeho korektnost
+
+### Horn-SAT
+
+Výrok je v Hornově tvaru, pokud je konjunkcí hornovských klauzulí.
+Hornovská klauzule je klauzule obsahující nejvýše jeden pozitivní literál.
+
+Vstupem je výrok $\varphi$ v Hornově tvaru.
+Výstupem je model $\varphi$ nebo informace, nebo informace, že 
+
+### Algoritmus jednotkové propagace
+
+### Korektnost algoritmu jednotkové propagace
 
 \pagebreak
 
