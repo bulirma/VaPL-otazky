@@ -706,19 +706,57 @@ Výrok je v Hornově tvaru, pokud je konjunkcí hornovských klauzulí.
 Hornovská klauzule je klauzule obsahující nejvýše jeden pozitivní literál.
 
 Vstupem je výrok $\varphi$ v Hornově tvaru.
-Výstupem je model $\varphi$ nebo informace, nebo informace, že 
+Výstupem je model $\varphi$, nebo informace, že $\varphi$ není splnitelný.
+
+1. $\varphi$ obsahuje dvojici opačných jednotkových klauzulí $\ell$, $\overline{\ell}$ $\Rightarrow$ není splnitelný
+2. $\varphi$ neobsahuje žádnou jednotkovou klauzuli $\Rightarrow$ je splnitelný,
+ohodnoť všechny zbývající proměnné $0$
+3. $\varphi$ obsahuje jednotkovou klauzuli $\ell$ $\Rightarrow$ ohodnoť literál $\ell$ hodnotou $1$,
+proveď jednotkovou propagaci, nahraď $\varphi$ výrokem $\varphi^{\ell}$, a vrať se na začátek
 
 ### Algoritmus jednotkové propagace
 
+Pokud výrok obsahuje jednotkovou klauzuli, víme, jak musí být ohodnocena výroková proměnná tohoto literálu.
+Tuto znalost můžeme propagovat.
+
+- vyškrtneme klauzule obsahující daný literál, neboť ten ji splňuje
+- z klauzulí vyškrtneme opačný literál, neboť ten je nemůže splnit
+
 ### Korektnost algoritmu jednotkové propagace
+
+Korektnost plyne z předchozího odůvodnění kroků jednotkové propagace.
 
 \pagebreak
 
 ## (L4) Algoritmus DPLL pro řešení SAT
 
+Vstupem je výrok $\varphi$ v CNF.
+Výstupem je model $\varphi$, nebo informace, že $\varphi$ není splnitelný.
+
+1. dokud $\varphi$ obsahuje jednotkovou klauzuli s $\ell$, ohodnoť $\ell$ hodnotou $1$,
+proveď jednotkovou propagaci a nahraď $\varphi$ výrokem $\varphi^{\ell}$
+2. dokud existuje literál $\ell$, který má ve $\varphi$ čistý výskyt, ohodnoť $\ell$ hodnotou $1$,
+odstraň klauzule obsahující $\ell$
+3. pokud $\varphi$ nebosahuje žádnou klauzuli, je splnitelný
+4. pokud $\varphi$ obsahuje prázdnou klauzuli, je nesplnitelný
+5. jinak zvol dosud neohodnocenou výrokovou proměnnou *p* a zavolej algoritmus rekurzivně na $\varphi \land p$
+a na $\varphi \land \neg p$
+
+Literál má ve výroku čistý výskyt, pokud se v něm vyskytuje, a zároveň se v něm nevyskytuje jeho opačný literál.
+
 \pagebreak
 
 ## (L5) Věta o konstantách
+
+### Znění
+
+Mějme formuli $\varphi$ v jazyce *L* s volnými proměnnými $x_1, ..., x_n$.
+Označme $L'$ rozšíření jazyka o nové konstantní symboly $c_1, ..., c_n$
+a buď $T'$ stejná teorie jako *T*, ale v jazyce $L'$. Potom platí:
+
+$$T \models \varphi \Leftrightarrow T' \models \varphi(x_1/c_1, ..., x_n/c_n)$$
+
+### Důkaz
 
 \pagebreak
 
