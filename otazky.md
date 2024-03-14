@@ -561,13 +561,59 @@ Teorije je kompletní $\Leftrightarrow$ má právě jeden model až elementárn�
 
 ### Podstruktura
 
+Mějme strukturu $\mathcal{A} = \langle A, \mathcal{R}^{\mathcal{A}}, \mathcal{F}^{\mathcal{A}} \rangle$
+v signatuře $\langle \mathcal{R}, \mathcal{F} \rangle$.
+Struktura $\mathcal{B} = \langle B, \mathcal{R}^{\mathcal{B}}, \mathcal{F}^{\mathcal{B}} \rangle$
+je (indukovaná) podstruktura $\mathcal{A}$, značíme $\mathcal{B} \subseteq \mathcal{A}$, jestliže:
+
+- $\emptyset \neq \mathcal{B} \subseteq \mathcal{A}$
+- $\mathcal{R}^{\mathcal{B}} = \mathcal{R}^{\mathcal{A}} \cap B^{ar(R)}$ pro každý relační symbol $R \in \mathcal{R}$
+- $f^{\mathcal{B}} = f^{\mathcal{A}} \cap (B^{ar(f)} \times B)$ pro každý funkční symbol $f \in \mathcal{F}$
+(funkce $f^{\mathcal{B}}$ je restrikce $f^{\mathcal{A}}$ na množinu *B*, a její výstupy jsou všechny také z *B*)
+- speciálně, pro každý konstantní symbol $c \in \mathcal{F}$ máme $c^{\mathcal{B}} = c^{\mathcal{A}} \in B$
+
+Množina $C \subseteq A$ je uzavřená na funkci $f: A^n \rightarrow A$,
+pokud $f(x_1, ..., x_n) \in C$ pro všechna $x_i \in C$.
+Platí, že množina $\emptyset \neq C \subseteq A$ je univerzem podstruktury struktury $\mathcal{A}$,
+právě když je *C* uzavřená na všechny funkce struktury $\mathcal{A}$ (včetně konstant).
+V tom případě říkáme této podstruktuře restrikce $\mathcal{A}$ na množinu *C*
+a značíme ji $\mathcal{A} \upharpoonright C$.
+
 ### Generovaná podstruktura
 
+Mějme strukturu $\mathcal{A} = \langle A, \mathcal{R}^{\mathcal{A}}, \mathcal{F}^{\mathcal{A}} \rangle$
+a neprázdnou podmnožinu $X \subseteq A$. Označme *B* jako nejmenší podmnožinu *A*, která obsahuje množinu *X*
+a je uzavřená na všechny funkce struktury $\mathcal{A}$ (také obsahuje všechny konstanty).
+Podstruktura $\mathcal{A} \upharpoonright C$ je generovaná množinou *X*, značíme $\mathcal{A}\langle X \rangle$.
+
 ### Expanze a redukt struktury
+
+Mějme jazyky $L \subseteq L'$, *L*-strukturu $\mathcal{A}$, a $L'$-strukturu
+$\mathcal{A}'$ na stejné doméně $A = A'$. Jestliže je interpretace každého symbolu
+(relačního, funkčního, konstantního) stejná (relace, funkce, konstanta) v $\mathcal{A}$ i v $\mathcal{A}'$
+potom říkáme, že struktura $\mathcal{A}'$ je expanzí struktury *A* do jazyka $L'$
+(také říkáme, že je $L'$-expanzí ) a že struktura $\mathcal{A}$ je reduktem
+struktury $\mathcal{A}'$ na jazyk *L* (také říkáme, že je *L*-reduktem).
 
 \pagebreak
 
 ## (P19) Definovatelnost ve struktuře
+
+Mějme formuli $\varphi(x_1, ..., x_n)$ a strukturu $\mathcal{A}$ v témž jazyce.
+Množina definovaná formulí $\varphi(x_1, ..., x_n)$ ve struktuře $\mathcal{A}$,
+značíme $\varphi^{\mathcal{A}}(x_1, ..., x_n)$, je:
+$$\varphi^{\mathcal{A}}(x_1, ..., x_n) = \{ (a_1, ..., a_n) \in A^n \mid \mathcal{A} \models \varphi\left[ e(x_1/a_1, ..., x_n/a_n) \right] \}$$
+Zkráceně totéž zapíšeme také jako
+$\varphi^{\mathcal{A}}(\overline{x}) = \{ \overline{a} \in A^n \mid \mathcal{A} \models \varphi\left[ e(\overline{x}/\overline{a}) \right] \}$.
+
+Mějme formuli $\varphi(\overline{x}, \overline{y})$, kde $|\overline{x}| = n$ a $|\overline{y}| = k$,
+strukturu $\mathcal{A}$ v témž jazyce a *k*-tici prvků $\overline{b} \in A^k$.
+Množina definovaná formulí $\varphi(\overline{x}, \overline{y})$ s parametry $\overline{b}$ ve struktuře $\mathcal{A}$,
+značíme $\varphi^{\mathcal{A}, \overline{b}}(\overline{x}, \overline{y})$, je:
+$$\varphi^{\mathcal{A}, \overline{b}}(\overline{x}, \overline{y}) = \{ \overline{a} \in A^n \mid \mathcal{A} \models \varphi\left[ e(\overline{x}/\overline{a}, \overline{y}\/overline{b}) \right] \}$$
+Pro strukturu $\mathcal{A}$ a podmnožinu $B \subseteq A$ označíme $Df^n(\mathcal{A}, B)$
+množinu všech množin definovatelných ve struktuře $\mathcal{A}$ s parametry pocházejícími z *B*.
+
 
 \pagebreak
 
@@ -610,17 +656,95 @@ Speciálně pro konstantní symbol je $n = 0$.
 
 ## (P21) Prenexní normální forma, Skolemova varianta
 
+### Prenexní normální forma (PNF)
+
+Formule $\varphi$ je v prenexní normální formě (PNF), je-li tvaru
+$$(Q_1 x_1) ... (Q_n x_n)\varphi'$$
+kde $Q_i$ je kvantifikátor ($\forall$, nebo $\exists$) a formule $\varphi'$ je otevřená.
+Formuli $\varphi'$ potom říkáme otevřené jádro $\varphi$ a $(Q_1 x_1) ... (Q_n x_n)$ je kvantifikátorový prefix.
+Je-li $\varphi$ formule v PNF a jsou-li všechny kvantifikátory univerzální, potom říkáme,
+že $\varphi$ je univerzální formule.
+
+### Skolemova varianta
+
+Mějme *L*-sentenci $\varphi$ v PNF, a nechť všechny její vá-
+zané proměnné jsou různé. Nechť existenční kvantifikátory z prefixu $\varphi$ jsou $(\exists y_1), ..., (\exists y_n)$
+(v tomto pořadí), a nechť pro každé *i* jsou $(\forall x_1), ..., (\forall x_{n_i})$
+právě všechny univerzální kvantifikátory předcházející kvantifikátor $(\exists y_i)$ v prefixu $\varphi$.
+
+Označme $L'$ rozšíření *L* o nové $n_i$-ární funkční symboly $f_1, ..., f_n$, kde symbol $f_i$ je arity
+$n_i$, pro každé *i*. Skolemova varianta sentence $\varphi$ je $L'$-sentence $\varphi_S$ vzniklá z $\varphi$ tak,
+že pro každé $i = 1, ..., n$:
+
+- odstraníme z prefixu kvantifikátor $(\exists y_i)$
+- substituujeme za proměnnou $y_i$ term $f_i(x_1, ..., x_{n_i})$
+
+Tomuto procesu říkáme také skolemizace.
+
 \pagebreak
 
 ## (P22) Izomorfismus struktur, izomorfní spektrum, $\omega$-kategorická teorie
+
+### Izomorfismus struktur
+
+Mějme struktury $\mathcal{A}$, $\mathcal{B}$ jazyka $L = \langle \mathcal{R}, \mathcal{F} \rangle$
+Isomorfismus $\mathcal{A}$ a $\mathcal{B}$ ("$\mathcal{A}$ na $\mathcal{B}$") je bijekce $h: A \rightarrow B$
+splňující následující vlastnosti:
+
+- Pro každý (*n*-ární) funkční symbol $f \in \mathcal{F}$ a pro všechna $a_i \in A$ platí:
+$$h(fA(a1, . . . , an)) = fB(h(a1), . . . , h(an))$$
+(Speciálně, je-li $c \in \mathcal{F}$ konstantní symbol, platí $h(c^{\mathcal{A}}) = c^{\mathcal{B}}$.)
+- Pro každý (*n*-ární) relační symbol $R \in \mathcal{R}$ a pro všechna $a_i \in A$ platí:
+$$R^{\mathcal{A}}(a_1, ..., a_n) \Leftrightarrow R^{\mathcal{B}}(h(a_1), ..., h(a_n))$$
+
+Pokud existuje, říkáme, že $\mathcal{A}$ a $\mathcal{B}$ jsou izomorfní
+("$\mathcal{A}$ je izomorfní s $\mathcal{B}$ via *h*") a píšeme
+$\mathcal{A} \simeq \mathcal{B}$ (nebo $\mathcal{A} \simeq_h \mathcal{B}$).
+Automorfismus $\mathcal{A}$ je izomorfismus $\mathcal{A}$ na $\mathcal{A}$.
+
+### Izomorfní spektrum a $\omega$-kategorická teorie
+
+Izomorfní spektrum teorie *T* je počet $I(\kappa, T)$ modelů *T* kardinality $\kappa$ až na izomorfismus,
+pro každou kardinalitu $\kappa$ (včetně transfinitních).
+Teorie *T* je $\kappa$-kategorická, pokud $I(\kappa, T) = 1$
+
+Teorie je $\omega$-kategorická pro $\kappa = \omega$,
+tedy jedná se o teorii s jediným spočetně nekonečným modelem až na isomorfismus.
 
 \pagebreak
 
 ## (P23) Axiomatizovatelnost, konečná axiomatizovatelnost, otevřená axiomatizovatelnost
 
+Mějme třídu struktur $K \subseteq M_L$ v nějakém jazyce *L*.
+Říkáme, že *K* je
+
+- axiomatizovatelná, pokud existuje *L*-teorie *T* taková, že $M_L(T) = K$
+- konečně axiomatizovatelná, pokud je axiomatizovatelná konečnou teorií
+- otevřeně axiomatizovatelná, pokud je axiomatizovatelná otevřenou teorií
+
 \pagebreak
 
-## (P24) Rekurzivní axiomatizace, rekurzivní axiomatizovatelnost, rekurzivně spočetná kompletace.
+## (P24) Rekurzivní axiomatizace, rekurzivní axiomatizovatelnost, rekurzivně spočetná kompletace
+
+### Rekurzivní axiomatizace
+
+Teorie *T* je rekurzivně axiomatizovaná, pokud existuje algoritmus,
+který pro každou vstupní formuli $\varphi$ doběhne a odpoví, zda $\varphi \in T$.
+
+### Rekurzivní axiomatizovatelnost
+
+Třída *L*-struktur $K \subseteq M_L$ je rekurzivně axiomatizovatelná,
+pokud existuje rekurzivně axiomatizovaná *L*-teorie *T* taková, že $K = M_L(T)$.
+Teorie $T'$ je rekurzivně axiomatizovatelná, pokud je rekurzivně axiomatizovatelná třída jejích modelů,
+neboli pokud je $T'$ ekvivalentní nějaké rekurzivně axiomatizované teorii.
+
+### Rekurzivně spočetná kompletace
+
+Řekneme, že teorie *T* má rekurzivně spočetnou kompletaci,
+pokud (nějaká) množina až na ekvivalenci všech jednoduchých kompletních
+extenzí teorie *T* je rekurzivně spočetná, tedy existuje algoritmus,
+který pro danou vstupní dvojici přirozených čísel $(i, j)$ vypíše na výstup *i*-tý axiom *j*-té extenze
+(v nějakém pevně daném uspořádání), nebo odpoví, že takový axiom už neexistuje.
 
 \pagebreak
 
